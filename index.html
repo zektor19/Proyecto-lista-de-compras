@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web App lista de compras</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h2>Lista de compras</h2>
+            <form id="compras">
+                <input id="lista" type="text" placeholder="escribir nuevo item" required>
+                <button> Agregar item</button>
+            </form>
+        </div>
+        <ol>
+        </ol>
+    </div>
+
+    <script>
+        let lista = document.getElementById('compras');
+        compras.addEventListener('submit',addItem);
+
+        function addItem(e){
+            e.preventDefault();
+            let data = this.elements.lista.value;
+            let list = document.querySelector('ol');
+            let item = document.createElement('li');
+            let text = document.createElement('p');
+
+            text.textContent = data;
+            this.elements.lista.value = "";
+            item.append(text);
+            list.append(item);
+
+            let removebtn = document.createElement('span');
+            removebtn.classList.add('remove');
+            item.append(removebtn);
+            removebtn.addEventListener('click' , deleteItem);
+            item.addEventListener('click', doneItem);
+        }
+        function deleteItem(e){
+            this.parentElement.remove();
+        }
+        function doneItem(e){
+            this.classList.toggle('done');
+        }
+
+    </script>
+</body>
+</html>l
